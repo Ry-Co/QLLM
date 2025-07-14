@@ -1,0 +1,18 @@
+Berka Dataset - Well behaved test case for LLM parsing: https://webpages.charlotte.edu/mirsad/itcs6265/group1/domain.html
+Random Gen Dataset - Poorly behaved / stressed data engi test case for LLM parsing ( random tables like our SQL server ( out of date tables, broken tables, empty tables, unrelated/reused names. ver2. ver2final etc.))
+ 
+start by feeding the information schema into the llm ( info schema from SSMS)
+
+
+need to find a method of summarizing schema analysis 
+
+here's the northwinds databasE: https://docs.yugabyte.com/preview/sample-data/northwind/ -- northwind is in our master database
+
+
+# pull in schema info from mssqls
+# inject it to the query of the LLM with some compression and see if - along with the user query- it can pick out what tables should be necessary
+
+
+https://www.youtube.com/watch?v=UtSSMs6ObqY
+
+https://github.com/ollama/ollama
