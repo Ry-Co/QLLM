@@ -1,36 +1,59 @@
-# main.py
-import asyncio
-import subprocess
+import subprocess  # we can use this to force ollama to load/unload the model from memory
 import ollama
+import pandas as pd
+import openpyxl
 
-async def generate_response(model, query, query_num):
-    client = ollama.AsyncClient()
+# shell('ollama ps')
+def shell(command_string):
     try:
-        response = await client.generate(model, query)
-        return f"Query {query_num:3d}: {response['response'].strip()}"
+        result: subprocess.CompletedProcess[str] = subprocess.run(command_string, shell=True, capture_output=True, text=True)
+        print(result.stdout)
+        print(result.stderr)
     except Exception as e:
-        return f"Query {query_num:3d}: Error - {e}"
+        print(f"An error occurred: {e}")    
 
-async def main():
+def generate_response(model, query):
+    client = ollama.Client()
+    response = client.generate(model, query)
+    return response["response"]
+
+
+def main():
+    # model = "dolphin3"
     model = "gemma3"
     query = "Respond with a random digit and only a digit. There should be no additional characters beyond the number itself."
+    iterations = 10
     
-    # Create all tasks at once
-    tasks = [
-        generate_response(model, query, i + 1) 
-        for i in range(100)
-    ]
     
-    # Run all tasks concurrently
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+    # list for outputs
+    model_names = [model] * iterations
+    queries = [query] * iterations
+    responses = [] * iterations
     
-    # Print results in order
-    for result in results:
-        print(result)
+    for i in range(iterations):
+        try:
+            response = generate_response(model, query)
+            responses.append(response)
+            print(f"Query {i + 1:3d}: {response.strip()}")
+        except Exception as e:
+                print(f"Query {i + 1:3d}: Error - {e}")
+
+
+    df = pd.DataFrame({
+        'model_name': model_names,
+        'query': queries,
+        'response': responses
+    })
+    
+    
+    df.to_csv('output.csv', index=False)
+    # df.to_excel('output.xlsx', index=False)
+
+
 
 if __name__ == "__main__":
     try:
-        asyncio.run(main())
+        main()
     except KeyboardInterrupt:
         print("\nGoodbye!")
-
+        
