@@ -58,7 +58,7 @@ def run_model_n_times(m, q, n):
 
 def main():
     query = "Respond with a single random digit."
-    iterations = 10
+    iterations = 1000
     models_to_run = ["gemma3", "deepseek-r1", "dolphin3", "qwen3"]
     first_model = True
 
