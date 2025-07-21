@@ -58,17 +58,14 @@ def run_model_n_times(m, q, n):
 
 def main():
     query = "Respond with a single random digit."
-    iterations = 1000
+    iterations = 3
     models_to_run = ["gemma3", "deepseek-r1", "dolphin3", "qwen3"]
     first_model = True
 
     for model in models_to_run:
         print(f"Running model: {model} | {time.strftime('%H:%M:%S', time.localtime())}")
         df = run_model_n_times(model, query, iterations)
-
-        # Add a column to identify which model generated the results
-        df["model"] = model
-
+        
         # write the table to disk
         df.to_csv(
             f"all_models_{iterations}_output.csv",
