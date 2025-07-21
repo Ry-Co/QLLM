@@ -1,3 +1,5 @@
+https://research.trychroma.com/context-rot
+
 Berka Dataset - Well behaved test case for LLM parsing: https://webpages.charlotte.edu/mirsad/itcs6265/group1/domain.html
 Random Gen Dataset - Poorly behaved / stressed data engi test case for LLM parsing ( random tables like our SQL server ( out of date tables, broken tables, empty tables, unrelated/reused names. ver2. ver2final etc.))
  
