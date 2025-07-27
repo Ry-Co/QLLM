@@ -29,6 +29,7 @@
 As I dive deeper into this area of research I will update this document to explain the tests being conducted as well as include any additional resources I find in this section. I am in the fortunate position of being a development resource to my friends and coworkers, I intend for this section to be a quick way to dive into the best work on this topic. 
 #### Reading for Nerds
 * [Chroma Context Rot Research](https://research.trychroma.com/context-rot)
+* [(Interesting BTS interview of the Chroma Research ^)](https://youtu.be/PGMtF5PHeDI)
 * [Gao, Xiong, Wu, Huang, Li, Wang, 2025](https://arxiv.org/abs/2503.00353)
 * [Khatun, 2024 (Ch7 Specifically)](https://uwspace.uwaterloo.ca/items/e01e11a6-e033-4f6a-85c6-849fba74e039)
 * [Lee, Hong, Thorne, 2024](https://arxiv.org/abs/2412.00543)
